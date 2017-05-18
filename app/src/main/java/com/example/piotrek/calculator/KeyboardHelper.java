@@ -38,7 +38,7 @@ public class KeyboardHelper {
                     @Override
                     public void onClick(View v) {
                         String buttonClicked = (String) button.getText();
-                        if (buttonClicked.equals("=")) {
+                        if (buttonClicked.equals("=") && !toCalculate.equals("")) {
                             String result = abacus.calculate(toCalculate);
                             Operation operation = new Operation(toCalculate, result);
                             adapter.add(operation);
@@ -59,7 +59,7 @@ public class KeyboardHelper {
                             toCalculate = "";
                             lineToCalculate.setText(toCalculate);
                             chengeClearName("clear all");
-                        } else {
+                        } else if (!buttonClicked.equals("=")) {
                             toCalculate = toCalculate + buttonClicked;
                             lineToCalculate.setText(toCalculate);
                             chengeClearName("clear");
